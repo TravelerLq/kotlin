@@ -20,13 +20,12 @@ fun compile(
     files: List<KtFile>,
     configuration: CompilerConfiguration,
     phaseConfig: PhaseConfig,
-    immediateDependencies: List<KlibModuleRef>,
     allDependencies: List<KlibModuleRef>,
     friendDependencies: List<KlibModuleRef>,
     mainArguments: List<String>?
 ): String {
     val (moduleFragment, dependencyModules, irBuiltIns, symbolTable, deserializer) =
-        loadIr(project, files, configuration, immediateDependencies, allDependencies, friendDependencies)
+        loadIr(project, files, configuration, allDependencies, friendDependencies)
 
     val moduleDescriptor = moduleFragment.descriptor
 
