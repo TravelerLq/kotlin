@@ -2,7 +2,6 @@ package org.jetbrains.kotlin.gradle.plugin
 
 import com.android.build.gradle.BaseExtension
 import com.android.build.gradle.BasePlugin
-import com.android.build.gradle.api.AndroidSourceSet
 import com.android.build.gradle.api.BaseVariant
 import com.android.builder.model.SourceProvider
 import groovy.lang.Closure
@@ -752,7 +751,7 @@ abstract class AbstractAndroidProjectHandler<V>(private val kotlinConfigurationT
         }
 
         kotlinOptions.noJdk = true
-        ext.addExtension(KOTLIN_OPTIONS_DSL_NAME, kotlinOptions)
+        ext.addExtensionAs(KotlinJvmOptions::class.java, KOTLIN_OPTIONS_DSL_NAME, kotlinOptions)
 
         val androidPluginIds = listOf(
             "android", "com.android.application", "android-library", "com.android.library",
